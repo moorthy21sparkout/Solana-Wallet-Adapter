@@ -1,0 +1,64 @@
+/* General Container */
+
+.wallet-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  
+  /* Wallet Section */
+  .wallet-container div {
+    margin-bottom: 20px;
+  }
+  
+  /* Buttons */
+  .wallet-container button {
+    background-color: #4caf50; /* Default green color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .wallet-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .wallet-container button:active {
+    background-color: #3e8e41;
+  }
+  
+  /* Disconnected Buttons */
+  .wallet-container button.connect {
+    background-color: #007bff; /* Blue for connect */
+  }
+  
+  .wallet-container button.connect:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Wallet Address Display */
+  .wallet-container p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    word-break: break-word;
+  }
+  
+
+  
+  /* Phantom Section */
+  .wallet-container .phantom {
+    border-top: 2px solid #f6851b; /* Phantom purple */
+    padding-top: 15px;
+  }
+  

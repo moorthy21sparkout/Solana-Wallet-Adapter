@@ -1,0 +1,115 @@
+<nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="assets/images/solflare-logo.jpeg" class="h-8 rounded-md" alt="Solflare Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SOLFLARE</span>
+    </a>
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <!-- Connect Wallet Button -->
+     <button
+        class="text-white font-medium rounded-lg text-sm px-4 py-2 text-center transition duration-300 ease-in-out transform hover:scale-105 bg-red-500 hover:bg-red-600 focus:ring-red-300 dark:bg-red-400 dark:hover:bg-red-500 dark:focus:ring-red-600"
+        type="button"
+        (click)="disconnectWallet()">
+        Disconnect Solflare
+      </button>
+
+    </div>
+    <!-- Display Network and Wallet Address -->
+    <div *ngIf="walletAddress" class="text-sm text-gray-900 dark:text-white mt-2 md:mt-0">
+      <p class="bg-gray-100 dark:bg-gray-800 p-2 rounded-md text-gray-700 dark:text-gray-400 font-semibold">
+        Network: {{ currentNetwork  }}
+      </p>
+    </div>
+    <div *ngIf="walletAddress" class="text-sm text-gray-900 dark:text-white mt-2 md:mt-0">
+        <p class="bg-gray-100 dark:bg-gray-100 p-2 rounded-md text-gray-700 dark:text-gray-400 font-semibold flex items-center">
+          <span class="mr-2">
+            <img src="{{ image }}" alt="Wallet Icon" class="w-6 h-6">
+          </span>
+         Connected Wallet: <span class="font-bold gap-2  cursor-pointer ml-2 hover:text-gray-500" >{{ walletAddress | walletFormat }}</span>
+         <svg (click)="copyToClipboard(walletAddress)"  class="cursor-pointer ml-2 w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M14 4v3a1 1 0 0 1-1 1h-3m4 10v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h2m11-3v10a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1V7.87a1 1 0 0 1 .24-.65l2.46-2.87a1 1 0 0 1 .76-.35H18a1 1 0 0 1 1 1Z"/>
+        </svg>        
+        </p>
+      </div>
+      
+  </div>
+</nav>
+<!-- <div class="network-info">
+    <h1>Wallet Network</h1>
+    <p>Network: {{ getNetworkName(currentNetwork) }}</p>
+    <p>Status: {{ isConnected ? 'Connected' : 'Not Connected' }}</p>
+    <p>RPC Endpoint: {{ endpoint }}</p>
+  </div> -->
+<div *ngIf="currentNetwork === 'testnet' && isConnected" class="p-4 mt-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+  <div class="p-4 mt-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+    <div class="flex justify-between items-center">
+      <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400">Demo Table (Testnet)</h2>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded" (click)="sendTransaction()">Send transaction</button>
+    </div>
+    <!-- Your Demo Table Content Goes Here -->
+    <table class="min-w-full table-auto mt-4">
+      <thead class="bg-gray-200 dark:bg-gray-700">
+        <tr>
+          <th class="px-4 py-2 text-left">Column 1</th>
+          <th class="px-4 py-2 text-left">Column 2</th>
+          <th class="px-4 py-2 text-left">Column 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-4 py-2">Data 1</td>
+          <td class="px-4 py-2">Data 2</td>
+          <td class="px-4 py-2">Data 3</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 4</td>
+          <td class="px-4 py-2">Data 5</td>
+          <td class="px-4 py-2">Data 6</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 7</td>
+          <td class="px-4 py-2">Data 8</td>
+          <td class="px-4 py-2">Data 9</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 10</td>
+          <td class="px-4 py-2">Data 11</td>
+          <td class="px-4 py-2">Data 12</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 13</td>
+          <td class="px-4 py-2">Data 14</td>
+          <td class="px-4 py-2">Data 15</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 16</td>
+          <td class="px-4 py-2">Data 17</td>
+          <td class="px-4 py-2">Data 18</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 19</td>
+          <td class="px-4 py-2">Data 20</td>
+          <td class="px-4 py-2">Data 21</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 22</td>
+          <td class="px-4 py-2">Data 23</td>
+          <td class="px-4 py-2">Data 24</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 25</td>
+          <td class="px-4 py-2">Data 26</td>
+          <td class="px-4 py-2">Data 27</td>
+        </tr>
+        <tr>
+          <td class="px-4 py-2">Data 28</td>
+          <td class="px-4 py-2">Data 29</td>
+          <td class="px-4 py-2">Data 30</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  </div>
+
+
