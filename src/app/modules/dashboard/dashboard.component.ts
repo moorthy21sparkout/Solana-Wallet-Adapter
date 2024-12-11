@@ -48,8 +48,11 @@ async connectPhantom(): Promise<void> {
   this.isPhantomConnection.set(true);
   try {
     await this.solanaService.connectPhantom();
-    this.router.navigate(['/phantom-wallet']);
-    this.toastr.info('Phantom wallet connected!');
+    this.walletAddress = await this.solanaService.getWalletAddress();
+    if(this.walletAddress){
+      this.router.navigate(['/phantom-wallet']);
+      this.toastr.info('Phantom wallet connected!');
+    }
   } catch (error) {
     this.isPhantomConnection.set(false);
     this.toastr.error('Failed to connect wallet.');
